@@ -1,8 +1,9 @@
 package de.tum.in.ase;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Package {
+public class Package implements Comparable<Package>{
 	private String sender;
 	private String address;
 	private double weight;
@@ -12,6 +13,14 @@ public class Package {
 		this.address = address;
 		this.weight = weight;
 	}
+
+	@Override
+	public int compareTo(Package o) {
+		return Double.compare(this.getWeight(),o.getWeight());
+		//if this.weight>o return 1/ this.weight<o return -1/this.weight==o return -1
+	}
+
+
 
 	public String getSender() {
 		return sender;
@@ -58,5 +67,13 @@ public class Package {
 	@Override
 	public int hashCode() {
 		return Objects.hash(sender, address, weight);
+	}
+
+	public static void main(String[] args) {
+		Package p1=new Package("Iceavenue 5", "Penguinway 4", 100);
+		Package p2=new Package("Iceavenue 5", "Penguinway 1", 85);
+		Package p3=new Package("Iceavenue 5", "Penguinway 1", 73);
+		System.out.println(p2.compareTo(p1));
+
 	}
 }
