@@ -16,7 +16,7 @@ public class Package implements Comparable<Package>{
 
 	@Override
 	public int compareTo(Package o) {
-		return Double.compare(this.getWeight(),o.getWeight());
+		return Double.compare(o.getWeight(),this.getWeight());
 		//if this.weight>o return 1/ this.weight<o return -1/this.weight==o return -1
 	}
 
@@ -70,10 +70,10 @@ public class Package implements Comparable<Package>{
 	}
 
 	public static void main(String[] args) {
-		Package p1=new Package("Iceavenue 5", "Penguinway 4", 100);
-		Package p2=new Package("Iceavenue 5", "Penguinway 1", 85);
+		Package p1=new Package("Iceavenue 5", "Penguinway 4", 85);
+		Package p2=new Package("Iceavenue 5", "Penguinway 1", 100);
 		Package p3=new Package("Iceavenue 5", "Penguinway 1", 73);
-		System.out.println(p2.compareTo(p1));
+		System.out.println(p1.compareTo(p2));
 
 	}
 }
