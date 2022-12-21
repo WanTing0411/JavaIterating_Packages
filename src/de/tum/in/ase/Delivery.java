@@ -89,10 +89,7 @@ public class Delivery implements Iterable<Package> {
 
             @Override
             public void remove() {
-                if(hasNext()==false){
-                    throw new NoSuchElementException();
-                }
-
+                Iterator.super.remove();
             }
         };
     }
