@@ -63,31 +63,30 @@ public class Delivery implements Iterable<Package> {
                         eachP.add(a);
                     }
                 }
+                this.eachP=eachP;
             }
+
 
             @Override
             public boolean hasNext() {
+                while (eachP.size()==0){
+                    sortbykey();
+                }
                 return position < eachP.size();
             }
 
             @Override
             public Package next() {
-                sortbykey();
+                //sortbykey(eachP);
                 if (position == eachP.size()) {
                     throw new NoSuchElementException();
                 }
-                for(int i=0;i<eachP.size();i++){
-                    position++;
-                    return eachP.get(i);
-                }
-//                for (int i = 0; i < sortedKeys.size(); i++) {
-//                    for (int j = 0; j < value.size(); j++) {
-//                        for (Package a : value.get(j)) {
-//                            return a;
-//                        }
-//                    }
+//                for(int i=0;i<eachP.size();i++){
+//                    //position++;
+//                    return eachP.get(position++);
 //                }
-                return null;
+                return eachP.get(position++);
+               // return null;
             }
 
             @Override
@@ -104,17 +103,16 @@ public class Delivery implements Iterable<Package> {
         delivery.add(new Package("Iceavenue 5", "Penguinway 4", 100));
         delivery.add(new Package("Iceavenue 5", "Penguinway 1", 85));
         delivery.add(new Package("Iceavenue 5", "Penguinway 1", 73));
-//        delivery.add(new Package("Snowlane 3", "Antarcticplace 3", 107));
-//        delivery.add(new Package("Winterhighway 89", "Antarcticplace 27", 20));
-//        delivery.add(new Package("Penguinway 6", "Tierpark Hellabrunn, Tierparkstr. 30", 1));
+        delivery.add(new Package("Snowlane 3", "Antarcticplace 3", 107));
+        delivery.add(new Package("Winterhighway 89", "Antarcticplace 27", 20));
+        delivery.add(new Package("Penguinway 6", "Tierpark Hellabrunn, Tierparkstr. 30", 1));
 //		delivery.add(new Package("Tierpark Hellabrunn, Tierparkstr. 30", "Penguinway 6", 0.3));
 //		delivery.add(new Package("Antarcticplace 123", "Penguroad 1", 6));
         //System.out.println(delivery.iterator().next());
-        while (delivery.iterator().hasNext()) {
-            System.out.println(delivery.iterator().next());
+        Iterator iter = delivery.iterator();
+        while (iter.hasNext()) {
+            System.out.println(iter.next());
         }
-
-
 
     }
 }
