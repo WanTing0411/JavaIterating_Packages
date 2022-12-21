@@ -77,14 +77,12 @@ public class Delivery implements Iterable<Package> {
 
             @Override
             public Package next() {
-                //sortbykey(eachP);
+                while (eachP.size()==0){
+                    sortbykey();
+                }
                 if (position == eachP.size()) {
                     throw new NoSuchElementException();
                 }
-//                for(int i=0;i<eachP.size();i++){
-//                    //position++;
-//                    return eachP.get(position++);
-//                }
                 return eachP.get(position++);
                // return null;
             }
@@ -108,8 +106,8 @@ public class Delivery implements Iterable<Package> {
         delivery.add(new Package("Penguinway 6", "Tierpark Hellabrunn, Tierparkstr. 30", 1));
 //		delivery.add(new Package("Tierpark Hellabrunn, Tierparkstr. 30", "Penguinway 6", 0.3));
 //		delivery.add(new Package("Antarcticplace 123", "Penguroad 1", 6));
-        //System.out.println(delivery.iterator().next());
         Iterator iter = delivery.iterator();
+        iter.next();
         while (iter.hasNext()) {
             System.out.println(iter.next());
         }
